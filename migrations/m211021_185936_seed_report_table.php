@@ -19,10 +19,11 @@ class m211021_185936_seed_report_table extends Migration
                 'report',
                 [
                     'enterprise_id' => rand(1,20),
-                    'amoun_workers' => $faker->randomFloat(),
+                    'amoun_workers' => rand(15, 10000),
                     'avarage_salary' => $faker->randomFloat(),
                     'paid_taxes' => $faker->randomFloat(),
                     'amount_power_charges' => $faker->randomFloat(),
+                    'supplier_name' => $faker->firstName(),
                     'report_date' => $faker->date(),
                     'status' => 1,
                     'created_at' => (new \yii\db\Expression('NOW()'))

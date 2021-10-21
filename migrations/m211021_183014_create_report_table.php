@@ -19,6 +19,7 @@ class m211021_183014_create_report_table extends Migration
             'avarage_salary' => $this->float('2')->notNull(),
             'paid_taxes' => $this->float('2')->notNull(),
             'amount_power_charges' => $this->float('2'),
+            'supplier_name' => $this->string(255),
             'report_date' => $this->date(),
             'status' => $this->tinyInteger(2)->defaultValue(0),
             'created_at' => $this->dateTime(),

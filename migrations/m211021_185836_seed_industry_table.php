@@ -16,7 +16,7 @@ class m211021_185836_seed_industry_table extends Migration
             'industry',
             [
                 'parent_id' => 0,
-                'fullname' => 'Химическая',
+                'name' => 'Химическая',
                 'created_at' => (new \yii\db\Expression('NOW()'))
             ]
         );
@@ -24,7 +24,7 @@ class m211021_185836_seed_industry_table extends Migration
             'industry',
             [
                 'parent_id' => 0,
-                'fullname' => 'Пищевая',
+                'name' => 'Пищевая',
                 'created_at' => (new \yii\db\Expression('NOW()'))
             ]
         );
@@ -32,7 +32,7 @@ class m211021_185836_seed_industry_table extends Migration
             'industry',
             [
                 'parent_id' => 1,
-                'fullname' => 'Фармацевтика',
+                'name' => 'Фармацевтика',
                 'created_at' => (new \yii\db\Expression('NOW()'))
             ]
         );
@@ -40,7 +40,7 @@ class m211021_185836_seed_industry_table extends Migration
             'industry',
             [
                 'parent_id' => 1,
-                'fullname' => 'Нефтепродукты',
+                'name' => 'Нефтепродукты',
                 'created_at' => (new \yii\db\Expression('NOW()'))
             ]
         );
@@ -48,7 +48,7 @@ class m211021_185836_seed_industry_table extends Migration
             'industry',
             [
                 'parent_id' => 1,
-                'fullname' => 'Молочная',
+                'name' => 'Молочная',
                 'created_at' => (new \yii\db\Expression('NOW()'))
             ]
         );
@@ -56,7 +56,7 @@ class m211021_185836_seed_industry_table extends Migration
             'industry',
             [
                 'parent_id' => 1,
-                'fullname' => 'Мясная',
+                'name' => 'Мясная',
                 'created_at' => (new \yii\db\Expression('NOW()'))
             ]
         );
@@ -64,7 +64,7 @@ class m211021_185836_seed_industry_table extends Migration
             'industry',
             [
                 'parent_id' => 1,
-                'fullname' => 'Напитки безалкогольные',
+                'name' => 'Напитки безалкогольные',
                 'created_at' => (new \yii\db\Expression('NOW()'))
             ]
         );

@@ -53,17 +53,18 @@ class Report extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'enterprise_id' => 'Enterprise ID',
-            'amoun_workers' => 'Amoun Workers',
-            'avarage_salary' => 'Avarage Salary',
-            'paid_taxes' => 'Paid Taxes',
-            'amount_power_charges' => 'Amount Power Charges',
-            'report_date' => 'Report Date',
-            'status' => 'Status',
-            'created_at' => 'Created At',
-            'created_by' => 'Created By',
-            'updated_at' => 'Updated At',
-            'updated_by' => 'Updated By',
+            'enterprise_id' => 'Предприятие',
+            'amoun_workers' => 'Количество работников',
+            'avarage_salary' => 'Средняя зарплата работников',
+            'paid_taxes' => 'Сумма уплаченных налогов',
+            'amount_power_charges' => 'Сумма начислений',
+            'supplier_name' => 'Наименование поставщика',
+            'report_date' => 'Дата отчета',
+            'status' => 'Статус',
+            'created_at' => 'Дата и время добавление',
+            'created_by' => 'Добавил',
+            'updated_at' => 'Время пос. обновление',
+            'updated_by' => 'Обновил',
         ];
     }
 

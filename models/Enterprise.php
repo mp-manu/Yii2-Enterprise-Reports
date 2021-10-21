@@ -55,16 +55,16 @@ class Enterprise extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'industry_id' => 'Industry ID',
-            'name' => 'Name',
-            'inn' => 'Inn',
-            'address' => 'Address',
-            'tel' => 'Tel',
-            'status' => 'Status',
-            'created_at' => 'Created At',
-            'created_by' => 'Created By',
-            'updated_at' => 'Updated At',
-            'updated_by' => 'Updated By',
+            'industry_id' => 'Отрасль',
+            'name' => 'Название',
+            'inn' => 'ИНН',
+            'address' => 'Адрес',
+            'tel' => 'Телефон',
+            'status' => 'Статус',
+            'created_at' => 'Дата и время добавление',
+            'created_by' => 'Добавил',
+            'updated_at' => 'Время пос. обновление',
+            'updated_by' => 'Обновил',
         ];
     }
 

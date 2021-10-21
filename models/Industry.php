@@ -50,14 +50,14 @@ class Industry extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'parent_id' => 'Parent ID',
-            'name' => 'Name',
-            'description' => 'Description',
-            'status' => 'Status',
-            'created_at' => 'Created At',
-            'created_by' => 'Created By',
-            'updated_at' => 'Updated At',
-            'updated_by' => 'Updated By',
+            'parent_id' => 'Категория',
+            'name' => 'Отрасль',
+            'description' => 'Описание',
+            'status' => 'Статус',
+            'created_at' => 'Дата и время добавление',
+            'created_by' => 'Добавил',
+            'updated_at' => 'Время пос. обновление',
+            'updated_by' => 'Обновил',
         ];
     }
 

@@ -25,11 +25,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'paid_taxes') ?>
 
-    <?php // echo $form->field($model, 'amount_power_charges') ?>
+    <?= $form->field($model, 'amount_power_charges') ?>
 
-    <?php // echo $form->field($model, 'report_date') ?>
+    <?= $form->field($model, 'report_date') ?>
 
-    <?php // echo $form->field($model, 'status') ?>
+    <?= $form->field($model, 'status') ?>
 
     <?php // echo $form->field($model, 'created_at') ?>
 

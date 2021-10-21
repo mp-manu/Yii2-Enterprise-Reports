@@ -24,6 +24,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'report_date')->textInput() ?>
 
+    <?= $form->field($model, 'supplier_name')->textInput() ?>
+
     <?= $form->field($model, 'status')->textInput() ?>
 
     <?= $form->field($model, 'created_at')->textInput() ?>
