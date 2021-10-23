@@ -3,6 +3,8 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\db\Expression;
 
 /**
  * This is the model class for table "industry".
@@ -21,6 +23,21 @@ use Yii;
  */
 class Industry extends \yii\db\ActiveRecord
 {
+    const STATUS_ACTIVE = 1;
+    const STATUS_INACTIVE = 0;
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::class,
+                'createdAtAttribute' => 'created_at',
+                'updatedAtAttribute' => 'updated_at',
+                'value' => new Expression('NOW()'),
+            ],
+        ];
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -50,7 +67,7 @@ class Industry extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'parent_id' => 'Категория',
+            'parent_id' => 'Категория отраслей',
             'name' => 'Отрасль',
             'description' => 'Описание',
             'status' => 'Статус',
@@ -69,5 +86,33 @@ class Industry extends \yii\db\ActiveRecord
     public function getEnterprises()
     {
         return $this->hasMany(Enterprise::className(), ['industry_id' => 'id']);
+    }
+
+    public static function getList()
+    {
+        return self::find()->where(['status' => self::STATUS_ACTIVE])->asArray()->all();
+    }
+
+    public static function getPrentsList()
+    {
+        return self::find()->where(['=', 'parent_id', 0])->andWhere(['status' => self::STATUS_ACTIVE])->asArray()->all();
+    }
+
+    public static function getChildsList($id = 0)
+    {
+        if ($id > 0) {
+            return self::find()
+                ->where(['parent_id' => $id])
+                ->andWhere(['status' => self::STATUS_ACTIVE])
+                ->asArray()->all();
+        }
+        return self::find()
+            ->where(['>', 'parent_id', 0])
+            ->andWhere(['status' => self::STATUS_ACTIVE])
+            ->asArray()->all();
+    }
+
+    public static function getStatusList(){
+        return array(self::STATUS_ACTIVE => 'Активный', self::STATUS_INACTIVE => 'Неактивный');
     }
 }

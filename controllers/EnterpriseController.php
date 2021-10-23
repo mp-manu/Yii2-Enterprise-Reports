@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Enterprise;
 use app\models\EnterpriseSearch;
+use app\models\Industry;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -67,6 +68,7 @@ class EnterpriseController extends Controller
     public function actionCreate()
     {
         $model = new Enterprise();
+        $industryModel = new Industry();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
@@ -78,6 +80,7 @@ class EnterpriseController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'industryModel' => $industryModel
         ]);
     }
 

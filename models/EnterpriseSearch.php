@@ -40,7 +40,7 @@ class EnterpriseSearch extends Enterprise
      */
     public function search($params)
     {
-        $query = Enterprise::find();
+        $query = Enterprise::find()->with('industry');
 
         // add conditions that should always apply here
 

@@ -26,8 +26,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'parent_id',
+//            'id',
+            [
+                'attribute' => 'parent_id',
+                'value' => function ($model) {
+                    if ($model->parent_id > 0) return \app\models\Industry::findOne($model->parent_id)->name;
+                }
+            ],
             'name',
             'description:ntext',
             'status',

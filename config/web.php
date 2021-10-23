@@ -6,6 +6,7 @@ $db = require __DIR__ . '/db.php';
 $config = [
     'id' => 'test_freedomfinance_parser',
     'name'  => 'Отчеты предприятий',
+    'language' => 'ru_RU',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
@@ -52,6 +53,12 @@ $config = [
             'showScriptName' => false,
             'rules' => [
             ],
+        ],
+        'pdf'=>[
+            'class'=>'app\components\ExportToPdf',
+        ],
+        'excel'=>[
+            'class'=>'app\components\ExportToExcel',
         ],
     ],
     'modules' => [

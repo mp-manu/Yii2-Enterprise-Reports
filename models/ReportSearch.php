@@ -5,12 +5,14 @@ namespace app\models;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Report;
+use yii\helpers\ArrayHelper;
 
 /**
  * ReportSearch represents the model behind the search form of `app\models\Report`.
  */
 class ReportSearch extends Report
 {
+    public $sum_paid_taxes;
     /**
      * {@inheritdoc}
      */
@@ -41,7 +43,10 @@ class ReportSearch extends Report
      */
     public function search($params)
     {
-        $query = Report::find();
+        $industryModel = new IndustrySearch();
+
+        $query = Report::find('*, sum(paid_taxes) as sum_paid_taxes')->joinWith('enterprise')
+            ->leftJoin('industry', 'enterprise.industry_id=industry.id');
 
         // add conditions that should always apply here
 
@@ -50,11 +55,29 @@ class ReportSearch extends Report
         ]);
 
         $this->load($params);
+        $industryModel->load($params);
 
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
             // $query->where('0=1');
             return $dataProvider;
+        }
+
+        if(!empty($this->report_date)){
+            $dates = explode(' - ', $this->report_date);
+            $query->andFilterWhere(['between',
+                'report_date', $dates[0], $dates[1]
+            ]);
+        }
+
+        if(!empty($industryModel->id)){
+            $childs = Industry::getChildsList($industryModel->id);
+            if(count($childs) > 0){
+                $query->andFilterWhere(['IN', 'industry.id', ArrayHelper::map($childs, 'id', 'id')]);
+            }else{
+                $query->andFilterWhere(['industry.id' => $industryModel->id]);
+            }
+
         }
 
         // grid filtering conditions
@@ -65,12 +88,7 @@ class ReportSearch extends Report
             'avarage_salary' => $this->avarage_salary,
             'paid_taxes' => $this->paid_taxes,
             'amount_power_charges' => $this->amount_power_charges,
-            'report_date' => $this->report_date,
             'status' => $this->status,
-            'created_at' => $this->created_at,
-            'created_by' => $this->created_by,
-            'updated_at' => $this->updated_at,
-            'updated_by' => $this->updated_by,
         ]);
 
         return $dataProvider;

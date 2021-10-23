@@ -3,7 +3,9 @@
 namespace app\models;
 
 use Yii;
-
+use yii\db\Expression;
+use yii\helpers\ArrayHelper;
+use yii\behaviors\TimestampBehavior;
 /**
  * This is the model class for table "enterprise".
  *
@@ -24,6 +26,21 @@ use Yii;
  */
 class Enterprise extends \yii\db\ActiveRecord
 {
+    const STATUS_ACTIVE = 1;
+    const STATUS_INACTIVE = 0;
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::class,
+                'createdAtAttribute' => 'created_at',
+                'updatedAtAttribute' => 'updated_at',
+                'value' => new Expression('NOW()'),
+            ],
+        ];
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -86,5 +103,13 @@ class Enterprise extends \yii\db\ActiveRecord
     public function getReports()
     {
         return $this->hasMany(Report::className(), ['enterprise_id' => 'id']);
+    }
+
+    public static function getList(){
+        return self::find()->where(['status' => 1])->asArray()->all();
+    }
+
+    public static function getStatusList(){
+        return array(self::STATUS_ACTIVE => 'Активный', self::STATUS_INACTIVE => 'Неактивный');
     }
 }

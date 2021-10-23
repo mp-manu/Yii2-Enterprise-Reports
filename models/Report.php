@@ -3,6 +3,8 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\db\Expression;
 
 /**
  * This is the model class for table "report".
@@ -24,6 +26,21 @@ use Yii;
  */
 class Report extends \yii\db\ActiveRecord
 {
+    const STATUS_ACTIVE = 1;
+    const STATUS_INACTIVE = 0;
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::class,
+                'createdAtAttribute' => 'created_at',
+                'updatedAtAttribute' => 'updated_at',
+                'value' => new Expression('NOW()'),
+            ],
+        ];
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -39,6 +56,12 @@ class Report extends \yii\db\ActiveRecord
     {
         return [
             [['enterprise_id', 'amoun_workers', 'avarage_salary', 'paid_taxes'], 'required'],
+            ['supplier_name', 'required', 'when' => function ($model) {
+                return $model->amount_power_charges > 0;
+                }, 'whenClient' => "function (attribute, value) {
+                    return $('#report-amount_power_charges').val() > 0;
+                }"
+            ],
             [['enterprise_id', 'amoun_workers', 'status', 'created_by', 'updated_by'], 'integer'],
             [['avarage_salary', 'paid_taxes', 'amount_power_charges'], 'number'],
             [['report_date', 'created_at', 'updated_at'], 'safe'],
@@ -76,5 +99,10 @@ class Report extends \yii\db\ActiveRecord
     public function getEnterprise()
     {
         return $this->hasOne(Enterprise::className(), ['id' => 'enterprise_id']);
+    }
+
+    public static function getStatusList()
+    {
+        return array(self::STATUS_ACTIVE => 'Активный', self::STATUS_INACTIVE => 'Неактивный');
     }
 }

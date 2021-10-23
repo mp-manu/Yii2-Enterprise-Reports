@@ -25,9 +25,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'industry_id',
+            [
+                'attribute' => 'industry_id',
+                'value' => 'industry.name',
+                'filter' => \yii\helpers\ArrayHelper::map(\app\models\Industry::getChildsList(), 'id', 'name'),
+            ],
             'name',
             'inn',
             'address',

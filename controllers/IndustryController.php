@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Industry;
 use app\models\IndustrySearch;
+use app\modules\admin\modules\katalog\models\KatalogTwo;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -67,7 +68,6 @@ class IndustryController extends Controller
     public function actionCreate()
     {
         $model = new Industry();
-
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
@@ -113,6 +113,23 @@ class IndustryController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    public function actionGetChildById($id){
+
+        $rows = Industry::getChildsList($id);
+
+        echo "<option value=''> --- Выберите отрасль --- </option>";
+
+        if(count($rows)>0){
+            foreach($rows as $row){
+                echo "<option value='".$row['id']."'>".$row['name']."</option>";
+            }
+        }
+        else{
+            echo "";
+        }
+
     }
 
     /**

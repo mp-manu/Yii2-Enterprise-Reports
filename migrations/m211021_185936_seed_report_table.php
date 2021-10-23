@@ -24,7 +24,7 @@ class m211021_185936_seed_report_table extends Migration
                     'paid_taxes' => $faker->randomFloat(),
                     'amount_power_charges' => $faker->randomFloat(),
                     'supplier_name' => $faker->firstName(),
-                    'report_date' => $faker->date(),
+                    'report_date' => $faker->date('Y-m-d'),
                     'status' => 1,
                     'created_at' => (new \yii\db\Expression('NOW()'))
                 ]

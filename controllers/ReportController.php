@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\Industry;
+use app\models\IndustrySearch;
 use app\models\Report;
 use app\models\ReportSearch;
 use yii\web\Controller;
@@ -39,10 +41,14 @@ class ReportController extends Controller
     {
         $searchModel = new ReportSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
+        $modelIndustry = new IndustrySearch();
+        $modelIndustry->search($this->request->queryParams);
+
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'modelIndustry' => $modelIndustry
         ]);
     }
 
