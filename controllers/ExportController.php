@@ -63,11 +63,18 @@ class ExportController extends Controller
     }
 
     public function actionToExcel(){
-        $html = $this->renderPartial($data['exportFile'],
-            ['model' => $data['data'], 'type' => $type,
-            ]);
-
-        return \Yii::$app->pdf->exportData($data['title'], $data['fileName'], $html);
+        $searchModel = new ReportSearch();
+        $dataProvider = $searchModel->search($this->request->queryParams);
+        $modelIndustry = new IndustrySearch();
+        $modelIndustry->search($this->request->queryParams);
+        $file = $this->renderPartial('excel', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'modelIndustry' => $modelIndustry
+        ]);
+        $fileName = 'Report.xls';
+        $options = ['mimeType' => 'application/vnd.ms-excel'];
+        return \Yii::$app->excel->exportExcel($file, $fileName, $options);
     }
 
 }
