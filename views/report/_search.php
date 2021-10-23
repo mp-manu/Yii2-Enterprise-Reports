@@ -46,8 +46,8 @@ use yii\bootstrap4\ActiveForm;
     <div class="form-group">
         <?= Html::submitButton('Сформировать', ['class' => 'btn btn-primary']) ?>
         <?= Html::resetButton('Сбросить', ['class' => 'btn btn-outline-secondary']) ?>
-        <?= Html::a('Экcпорт в pdf', '/export/to-pdf?'.$_SERVER['QUERY_STRING'], ['class' => 'btn btn-warning']) ?>
-        <?= Html::a('Экспорт в excel', '/export/to-excel?'.$_SERVER['QUERY_STRING'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Экcпорт в pdf', '/export/to-pdf?'.$_SERVER['QUERY_STRING'].'&ReportSearch%5Bexport%5D=1', ['class' => 'btn btn-warning']) ?>
+        <?= Html::a('Экспорт в excel', '/export/to-excel?'.$_SERVER['QUERY_STRING'].'&ReportSearch%5Bexport%5D=1', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

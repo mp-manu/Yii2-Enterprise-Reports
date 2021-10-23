@@ -54,9 +54,6 @@ $config = [
             'rules' => [
             ],
         ],
-        'pdf'=>[
-            'class'=>'app\components\ExportToPdf',
-        ],
         'excel'=>[
             'class'=>'app\components\ExportToExcel',
         ],

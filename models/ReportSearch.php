@@ -12,7 +12,7 @@ use yii\helpers\ArrayHelper;
  */
 class ReportSearch extends Report
 {
-    public $sum_paid_taxes;
+    public $export;
     /**
      * {@inheritdoc}
      */
@@ -45,17 +45,25 @@ class ReportSearch extends Report
     {
         $industryModel = new IndustrySearch();
 
-        $query = Report::find('*, sum(paid_taxes) as sum_paid_taxes')->joinWith('enterprise')
+        $query = Report::find()->joinWith('enterprise')
             ->leftJoin('industry', 'enterprise.industry_id=industry.id');
 
         // add conditions that should always apply here
 
-        $dataProvider = new ActiveDataProvider([
-            'query' => $query,
-        ]);
+
 
         $this->load($params);
         $industryModel->load($params);
+
+
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query
+        ]);
+
+        if($this->export == 1){
+            $dataProvider->pagination = false;
+        }
 
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails

@@ -14,6 +14,7 @@ class ExportController extends Controller
     public function actionToPdf(){
         ini_set('display_errors', 0);
         error_reporting(0);
+        $this->request->queryParams['ReportSearch']['data'] = 'export';
 
         $searchModel = new ReportSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
