@@ -3,7 +3,7 @@
 namespace app\components;
 use Yii;
 use yii\base\Component;
-use mPDF;
+use mPD;
  
 class ExportToPdf extends Component
 {

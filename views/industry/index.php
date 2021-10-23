@@ -35,7 +35,17 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'name',
             'description:ntext',
-            'status',
+            [
+                'attribute' => 'status',
+                'filter' => ['1' => 'Активный', '0' => 'Неактивный'],
+                'value' => function($model){
+                    if($model->status == 1){
+                        return 'Активный';
+                    }else{
+                        return 'Неактивынй';
+                    }
+                }
+            ],
             //'created_at',
             //'created_by',
             //'updated_at',

@@ -1,7 +1,6 @@
 <?php
 
-use yii\helpers\Html;
-use yii\grid\GridView;
+use yii\widgets\ListView;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\ReportSearch */
@@ -12,43 +11,22 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="report-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <?php //echo $this->render('_search', ['model' => $searchModel,  'modelIndustry' => $modelIndustry]); ?>
 
-    <p>
-        <?= Html::a('Добавить', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
-    <?php echo $this->render('_search', ['model' => $searchModel,  'modelIndustry' => $modelIndustry]); ?>
-
-    <?= GridView::widget([
+    <?= \yii\grid\GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-//            'id',
             [
-              'attribute' => 'enterprise_id',
-              'value' => 'enterprise.name',
-              'filter' => \yii\helpers\ArrayHelper::map(\app\models\Enterprise::getList(), 'id', 'name')
+                'attribute' => 'enterprise_id',
+                'value' => 'enterprise.name',
             ],
             'amoun_workers',
-            [
-                'attribute' => 'avarage_salary',
-
-            ],
             'paid_taxes',
-//            'amount_power_charges',
-            'report_date',
-//            'status',
-            //'created_at',
-            //'created_by',
-            //'updated_at',
-            //'updated_by',
+            'amount_power_charges',
+            'report_date'
 
-            ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
-
 
 </div>

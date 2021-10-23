@@ -33,6 +33,17 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'inn',
             'address',
+            [
+                'attribute' => 'status',
+                'filter' => ['1' => 'Активный', '0' => 'Неактивный'],
+                'value' => function($model){
+                    if($model->status == 1){
+                        return 'Активный';
+                    }else{
+                        return 'Неактивынй';
+                    }
+                }
+            ],
             //'tel',
             //'status',
             //'created_at',

@@ -14,7 +14,7 @@ class m211021_185936_seed_report_table extends Migration
     {
         $faker = \Faker\Factory::create();
 
-        for ($i = 0; $i < 20; $i++) {
+        for ($i = 0; $i < 100; $i++) {
             $this->insert(
                 'report',
                 [
