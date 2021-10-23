@@ -27,6 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
 //            'id',
+            'enterprise.industry.name',
             [
               'attribute' => 'enterprise_id',
               'value' => 'enterprise.name',
@@ -40,6 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'paid_taxes',
 //            'amount_power_charges',
             'report_date',
+
 //            'status',
             //'created_at',
             //'created_by',

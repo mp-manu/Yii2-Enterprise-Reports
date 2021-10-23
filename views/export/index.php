@@ -17,6 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
+            'enterprise.industry.name',
             [
                 'attribute' => 'enterprise_id',
                 'value' => 'enterprise.name',
@@ -24,7 +25,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'amoun_workers',
             'paid_taxes',
             'amount_power_charges',
-            'report_date'
+            'report_date',
+
 
         ],
     ]); ?>

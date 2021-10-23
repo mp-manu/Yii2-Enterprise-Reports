@@ -1,18 +1,4 @@
-/*
-SQLyog Ultimate v12.14 (64 bit)
-MySQL - 10.0.38-MariaDB : Database - enterprise-reports
-*********************************************************************
-*/
 
-/*!40101 SET NAMES utf8 */;
-
-/*!40101 SET SQL_MODE=''*/;
-
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`enterprise-reports` /*!40100 DEFAULT CHARACTER SET utf8 */;
 
 USE `enterprise-reports`;
 
@@ -257,7 +243,4 @@ insert  into `report`(`id`,`enterprise_id`,`amoun_workers`,`avarage_salary`,`pai
 (119,8,478,4696.78,2.1,2600.03,'Ena','2021-09-16',1,'2021-10-23 10:06:09',NULL,NULL,NULL),
 (120,14,2154,238243,847022,111301,'Alta','2021-08-24',1,'2021-10-23 10:06:09',NULL,NULL,NULL);
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
